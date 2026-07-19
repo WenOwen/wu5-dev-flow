@@ -1,0 +1,7 @@
+interface:
+  display_name: "Wu5 Dev Flow"
+  short_description: "用 SDD、TDD 和 Git 门禁规范 Python 开发"
+  default_prompt: "Use $wu5-dev-flow to initialize or continue this Python project with auditable SDD, TDD, and Git gates."
+
+policy:
+  allow_implicit_invocation: true
