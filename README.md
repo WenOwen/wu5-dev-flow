@@ -48,8 +48,8 @@ Copy-Item -Recurse -LiteralPath $skillSource -Destination $skillTarget -ErrorAct
 AGENTS.md          稳定约定、真实命令、文档入口
 docs/
   research.md      调研依据与未知项，需要时写
-  prd.md           用户、目标、MVP、非目标、成功标准
-  design.md        实现边界、重要取舍、测试与交付方式
+  PRD.md           面向需求读者：用户、目标、范围、验收
+  TechDesign.md    面向技术读者：技术选型、数据模型、交付方案
   memory.md        当前任务、关键决定、最新验证、下一步
   release.md       当前候选版本、发布与恢复、实际结果
 ```

@@ -3,7 +3,7 @@
 这是开发流程技能产品。可安装包位于 wu5-dev-flow/；docs/ 是本产品的开发资料，不随技能安装。
 
 ## 上下文
-先读 docs/memory.md，再按任务读 docs/prd.md、docs/design.md 和相关代码或说明。
+先读 docs/memory.md，再按任务读 docs/PRD.md、docs/TechDesign.md 和相关代码或说明。
 
 ## 约定
 技能保持简短，按真实失败改进。新项目文档不超过 500 个非空白字符。每次完成一个可验收任务，记录实际结果和下一步。
