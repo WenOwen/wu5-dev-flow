@@ -8,7 +8,8 @@
 
 | 版本 | 内容 |
 | --- | --- |
-| `1.0.0` | 当前精简版：短文档、按需阶段、最小验证循环。 |
+| 开发中 | 当前分支：十阶段按需参考、短文档与最小验证循环；尚未发布。 |
+| `1.0.0` | 首个精简版：短文档、按需阶段、最小验证循环。 |
 | [`0.1.0`](https://github.com/WenOwen/wu5-dev-flow/tree/dc2d220b804f3825f3343565e02331fb1c84201f) | 重构前的完整流程：审批门禁、状态机、脚本与变更包。 |
 
 Git 标签使用 `v1.0.0`、`v0.1.0`，固定对应版本内容，不随 `main` 更新。`1.0.0` 不兼容旧 CLI，升级方法见下文。
@@ -69,11 +70,15 @@ Move-Item -LiteralPath $skillTarget -Destination $skillBackup -ErrorAction Stop
 Write-Output "旧目录已备份到：$skillBackup"
 ```
 
-然后在本仓库根目录运行上面的安装命令。成功后，目标中只有 `SKILL.md`、`agents/openai.yaml`、`references/documents.md` 三个文件，没有嵌套目录或旧脚本。核对备份中的个人修改，按需迁回；安装失败可先将新目录移走，再将备份移回原位置。重新打开任务后使用新版。
+然后在本仓库根目录运行上面的安装命令。成功后，目标包含 `SKILL.md`、`agents/openai.yaml` 和完整 `references/`，没有嵌套目录或旧脚本。核对备份中的个人修改，按需迁回；安装失败可先将新目录移走，再将备份移回原位置。重新打开任务后使用新版。
 
 已有项目接入时，读取旧 `spec/` 的相关规格和未完成任务，提炼到对应 `docs/*.md`；保留旧材料供查阅，核实源码与测试后再记录当前进度。只替换 `AGENTS.md` 中旧技能管理的说明块，保留其他规则。旧材料的删除由用户决定。
 
-技能本身只有 [入口](wu5-dev-flow/SKILL.md)、[文档样例](wu5-dev-flow/references/documents.md) 和 UI 元数据，无运行时依赖。
+## 阶段参考
+
+[入口](wu5-dev-flow/SKILL.md) 按任务索引环境、调研、PRD、TechDesign、上下文、开发、质量、技术发布、用户交付与迭代十份参考。默认只加载当前阶段，跨阶段问题再补相关参考；文档样例随阶段放置。
+
+材料提炼自网站的阶段正文、文章、提示词和故障案例，保留来源与适配说明，见 [SOURCES.md](wu5-dev-flow/references/SOURCES.md)。技能无运行时依赖。
 
 流程组织参考 [The Vibe Coding Cookbook](https://vibeprompt.tech/workflow)。
 

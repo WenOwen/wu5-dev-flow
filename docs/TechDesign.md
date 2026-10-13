@@ -1,10 +1,10 @@
 # TechDesign：Wu5 Dev Flow
 
 ## 载体与运行环境
-采用 Agent Skill：Markdown 指令与 YAML 元数据，由 Codex 读取并执行；短文本便于审阅和按需读取。技能包无运行时依赖，保持三个文件。
+采用 Agent Skill：Markdown 指令与 YAML 元数据，由 Codex 读取并执行；短文本便于审阅和按需读取。技能包无运行时依赖。
 
 ## 交互
-使用自然语言对话；SKILL.md 判断阶段并指导行动，references 提供按需读取的短文档样例，agents/openai.yaml 提供展示信息。
+使用自然语言对话；SKILL.md 索引十个阶段，references 分阶段保存见解与短文档样例，默认只加载当前阶段。SOURCES 保存来源与许可，agents/openai.yaml 提供展示信息。
 
 ## 数据与上下文
 项目 Markdown 文件保存需求、技术选择与当前进度；AGENTS.md 保存稳定约定，Git 保存历史。沿用文件系统，不引入数据库或账号系统。
