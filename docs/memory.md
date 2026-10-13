@@ -1,13 +1,13 @@
 # 当前进度
 
 ## 本轮
-用户要求提炼 vibeprompt 网站有价值的内容，分阶段放入 references，并同步按需索引；分支 codex/validate-install。
+用户要求把技能装进常用 Skills 库。目标改用共享枢纽 `~/.agents/skills`（用户技能根 rank 500，本机 DSH 实际加载源），不再用 README 里的 `.codex\skills`。分支 codex/validate-install。
 
 ## 已落实
-新增环境到迭代十份参考，样例归入相关阶段，移除集中样例文件。SKILL 默认只读当前阶段，跨阶段问题再补充。PRD、TechDesign 和 README 同步包结构变化。
+安装 `wu5-dev-flow\` 到 `~/.agents/skills/wu5-dev-flow`：22 项文件与源 SHA256 全同，根层有 SKILL.md、agents/openai.yaml、完整 references，无嵌套。重装按 README 拒绝；备份移出再移回后文件集不变。技能目录已在本会话被发现，`skill wu5-dev-flow` 加载成功。
 
-## 来源与边界
-流程页跳转，核对官方 vibeprompt-site 分支 8d2dbbc 的正文、文章、提示词与故障案例；SOURCES 保存来源、适配点与 MIT 许可。固定工具和经验数字未变成通用门禁。
+## 未解决
+README「使用」与「从旧版切换」仍写 `.codex\skills`，与本机共享枢纽不一致；待用户决定是否改为可选技能目录并示例 `.agents\skills`。
 
 ## 下一步
-十阶段索引、链接、六份样例与项目文档字数、许可和技能格式检查通过；扩展包的五项安装验收通过。下一步用真实请求复测按需加载行为。已有版本标签不动，未推送。
+改 README 安装路径说明并提交；再用真实项目请求复测按需加载五阶段参考与文档字数限制。已有版本标签不动，未推送。
