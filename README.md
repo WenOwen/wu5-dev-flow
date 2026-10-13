@@ -24,7 +24,13 @@ git clone --branch v0.1.0 --depth 1 https://github.com/WenOwen/wu5-dev-flow.git 
 将仓库中的 `wu5-dev-flow` 文件夹复制到个人 Skills 目录，重新打开任务后调用：
 
 ```powershell
-Copy-Item -Recurse .\wu5-dev-flow "$env:USERPROFILE\.codex\skills\wu5-dev-flow"
+$skillSource = (Resolve-Path -LiteralPath .\wu5-dev-flow -ErrorAction Stop).Path
+$skillTarget = Join-Path $env:USERPROFILE '.codex\skills\wu5-dev-flow'
+if (Test-Path -LiteralPath $skillTarget) {
+    throw '已安装 Wu5 Dev Flow，请先按下文备份旧目录，再安装。'
+}
+New-Item -ItemType Directory -Path (Split-Path -Parent $skillTarget) -Force | Out-Null
+Copy-Item -Recurse -LiteralPath $skillSource -Destination $skillTarget -ErrorAction Stop
 ```
 
 ```text
@@ -52,7 +58,18 @@ docs/
 
 ## 从旧版切换
 
-新版移除了 `wu5_flow.py`、审批口令、JSON 状态、变更包和归档机制，旧命令不再支持。升级已安装副本时，先确认安装目录内没有个人修改，再用这三个文件替换整个旧技能目录，避免残留脚本与规则。
+新版移除了 `wu5_flow.py`、审批口令、JSON 状态、变更包和归档机制，旧命令不再支持。升级时先备份整个旧目录，备份放在 Skills 目录之外，避免同时发现两个版本：
+
+```powershell
+$skillTarget = Join-Path $env:USERPROFILE '.codex\skills\wu5-dev-flow'
+$backupRoot = Join-Path $env:USERPROFILE '.codex\skill-backups'
+$skillBackup = Join-Path $backupRoot ('wu5-dev-flow-' + [guid]::NewGuid().ToString('N'))
+New-Item -ItemType Directory -Path $backupRoot -Force | Out-Null
+Move-Item -LiteralPath $skillTarget -Destination $skillBackup -ErrorAction Stop
+Write-Output "旧目录已备份到：$skillBackup"
+```
+
+然后在本仓库根目录运行上面的安装命令。成功后，目标中只有 `SKILL.md`、`agents/openai.yaml`、`references/documents.md` 三个文件，没有嵌套目录或旧脚本。核对备份中的个人修改，按需迁回；安装失败可先将新目录移走，再将备份移回原位置。重新打开任务后使用新版。
 
 已有项目接入时，读取旧 `spec/` 的相关规格和未完成任务，提炼到对应 `docs/*.md`；保留旧材料供查阅，核实源码与测试后再记录当前进度。只替换 `AGENTS.md` 中旧技能管理的说明块，保留其他规则。旧材料的删除由用户决定。
 
