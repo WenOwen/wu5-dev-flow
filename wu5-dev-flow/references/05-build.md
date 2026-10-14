@@ -16,6 +16,6 @@
 
 从一个验收条件开始；可测试行为先 RED，再最小实现、GREEN 和必要重构。工具错误不能冒充 RED。运行受影响检查后审查最终差异，核对暂存内容与已验证内容一致，再提交本任务。
 
-任务清单、实际结果和下一步只写 memory。改变产品行为读 PRD 阶段；改变技术方案读 TechDesign 阶段；测试通过但用户路径不通，转质量阶段检查测试层级。
+任务清单、实际结果和下一步只写 memory，写完顺手删掉已完成任务的细节（保持一屏内）。改变产品行为读 PRD 阶段；改变技术方案读 TechDesign 阶段；测试通过但用户路径不通，转质量阶段检查测试层级。
 
 来源：[Build](https://vibeprompt.tech/workflow#step-05)、[定位 AI 代码故障](https://vibeprompt.tech/articles/vibe-debugging)。[源码快照、任务与调试提示及适配说明](SOURCES.md)。
